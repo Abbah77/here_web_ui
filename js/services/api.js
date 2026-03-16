@@ -275,7 +275,7 @@ class APIClient {
 
     // Get from cache (using Cache API)
     async getFromCache(endpoint, params) {
-        const cache = await caches.open(API_CACHE);
+        const cache = await caches.open(CACHE_NAMES.API);
         const url = new URL(`${this.baseURL}${endpoint}`);
         
         Object.keys(params).forEach(key => 
