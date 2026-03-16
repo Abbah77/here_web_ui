@@ -1,0 +1,12 @@
+{
+  "name": "here-social",
+  "version": "1.0.0",
+  "description": "Offline-first PWA Social Network",
+  "scripts": {
+    "start": "npx http-server . -p 8080 -c-1",
+    "generate-icons": "mkdir -p assets/icons && touch assets/icons/icon-72.png && touch assets/icons/icon-96.png && touch assets/icons/icon-128.png && touch assets/icons/icon-144.png && touch assets/icons/icon-152.png && touch assets/icons/icon-192.png && touch assets/icons/icon-384.png && touch assets/icons/icon-512.png"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
