@@ -13,46 +13,49 @@ class HEREApp {
 
     // Initialize app
     async init() {
-        console.log('Initializing HERE Social...');
+    console.log('Initializing HERE Social...');
+    this.showSplash();
 
-        // Show splash
-        this.showSplash();
+    try {
+        console.log('Step 1: Starting database init...');
+        await this.initDatabase();
+        console.log('✅ Step 1: Database init complete');
 
-        try {
-            // Initialize database
-            await this.initDatabase();
+        console.log('Step 2: Starting services init...');
+        await this.initServices();
+        console.log('✅ Step 2: Services init complete');
 
-            // Initialize services
-            await this.initServices();
+        console.log('Step 3: Starting auth init...');
+        await this.initAuth();
+        console.log('✅ Step 3: Auth init complete');
 
-            // Check auth session (forever login)
-            await this.initAuth();
+        console.log('Step 4: Setting up routes...');
+        this.initRoutes();
+        console.log('✅ Step 4: Routes setup complete');
 
-            // Setup routes
-            this.initRoutes();
+        console.log('Step 5: Setting up event listeners...');
+        this.setupEventListeners();
+        console.log('✅ Step 5: Event listeners complete');
 
-            // Setup event listeners
-            this.setupEventListeners();
+        const elapsed = Date.now() - this.startTime;
+        const remaining = Math.max(0, ANIMATION.SPLASH - elapsed);
+        console.log(`Splash hiding in ${remaining}ms`);
 
-            // Ensure splash shows at least 1.5s
-            const elapsed = Date.now() - this.startTime;
-            const remaining = Math.max(0, ANIMATION.SPLASH - elapsed);
+        setTimeout(() => {
+            this.hideSplash();
+            this.initialized = true;
+            console.log('✅ App fully initialized!');
+            
+            if (navigator.onLine) {
+                syncManager.syncAll();
+            }
+        }, remaining);
 
-            setTimeout(() => {
-                this.hideSplash();
-                this.initialized = true;
-                
-                // Start background sync
-                if (navigator.onLine) {
-                    syncManager.syncAll();
-                }
-            }, remaining);
-
-        } catch (error) {
-            console.error('Failed to initialize app:', error);
-            this.showError(error.message);
-        }
+    } catch (error) {
+        console.error('❌ FAILED at step:', error);
+        this.showError(error.message);
     }
+}
 
     // Initialize IndexedDB
     async initDatabase() {
