@@ -14,12 +14,12 @@ const STORAGE_KEYS = {
     SETTINGS: 'here_settings'
 };
 
-// API endpoints (mock for now)
+// API endpoints
 const API = {
-    BASE_URL: 'https://here-web-backend.onrender.com',  // ✅ Remove /api
+    BASE_URL: 'https://here-web-backend.onrender.com',
     ENDPOINTS: {
         AUTH: {
-            LOGIN: '/api/auth/login',                    // ✅ Add /api here
+            LOGIN: '/api/auth/login',
             REGISTER: '/api/auth/register',
             LOGOUT: '/api/auth/logout',
             REFRESH: '/api/auth/refresh'
@@ -39,6 +39,17 @@ const API = {
             LIST: '/api/chat/list',
             MESSAGES: '/api/chat/:id/messages',
             SEND: '/api/chat/send'
+        },
+        NOTIFICATIONS: {                    // ✅ ADD THIS
+            LIST: '/api/notifications',
+            READ: '/api/notifications/:id/read',
+            READ_ALL: '/api/notifications/read-all',
+            UNREAD_COUNT: '/api/notifications/unread-count'
+        },
+        FRIENDS: {                           // ✅ ADD THIS
+            REQUESTS: '/api/friends/requests',
+            ACCEPT: '/api/friends/requests/:id/accept',
+            DECLINE: '/api/friends/requests/:id'
         }
     }
 };
