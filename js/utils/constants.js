@@ -16,29 +16,29 @@ const STORAGE_KEYS = {
 
 // API endpoints (mock for now)
 const API = {
-    BASE_URL: 'https://here-web-backend.onrender.com/api',
+    BASE_URL: 'https://here-web-backend.onrender.com',  // ✅ Remove /api
     ENDPOINTS: {
         AUTH: {
-            LOGIN: '/auth/login',
-            REGISTER: '/auth/register',
-            LOGOUT: '/auth/logout',
-            REFRESH: '/auth/refresh'
+            LOGIN: '/api/auth/login',                    // ✅ Add /api here
+            REGISTER: '/api/auth/register',
+            LOGOUT: '/api/auth/logout',
+            REFRESH: '/api/auth/refresh'
         },
         USERS: {
-            PROFILE: '/users/profile',
-            SEARCH: '/users/search',
-            FRIENDS: '/users/friends'
+            PROFILE: '/api/users/profile',
+            SEARCH: '/api/users/search',
+            FRIENDS: '/api/users/friends'
         },
         POSTS: {
-            FEED: '/posts/feed',
-            CREATE: '/posts',
-            LIKE: '/posts/:id/like',
-            COMMENT: '/posts/:id/comments'
+            FEED: '/api/posts/feed',
+            CREATE: '/api/posts',
+            LIKE: '/api/posts/:id/like',
+            COMMENT: '/api/posts/:id/comments'
         },
         CHAT: {
-            LIST: '/chat/list',
-            MESSAGES: '/chat/:id/messages',
-            SEND: '/chat/send'
+            LIST: '/api/chat/list',
+            MESSAGES: '/api/chat/:id/messages',
+            SEND: '/api/chat/send'
         }
     }
 };
