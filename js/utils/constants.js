@@ -174,6 +174,7 @@ if (typeof module !== 'undefined' && module.exports) {
         API,
         ROUTES,
         DB_CONFIG,
+        CACHE_NAMES,        // ← ADD THIS LINE
         MESSAGE_STATUS,
         FRIEND_STATUS,
         NOTIFICATION_TYPES,
