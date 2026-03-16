@@ -84,6 +84,13 @@ const DB_CONFIG = {
     }
 };
 
+// In constants.js, add:
+const CACHE_NAMES = {
+    STATIC: 'here-cache-v1',
+    DYNAMIC: 'here-dynamic-v1',
+    API: 'here-api-v1'  // ← Add this
+};
+
 // Message status types
 const MESSAGE_STATUS = {
     PENDING: 'pending',
